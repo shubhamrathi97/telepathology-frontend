@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import customRoute from './customRoute';
+import drfProvider from './restProvider';
+import {getResource} from "./Resources";
+import authProvider from "./authProvider";
+import {Admin} from 'react-admin'
+import config from './config';
+
+const dataProvider = drfProvider(config.djangoServerURL);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Admin
+          // title={JSON.parse(localStorage.getItem('hospital')).name}
+          // appLayout={CustomLayout}
+          dataProvider={dataProvider}
+          // dashboard={Dashboard}
+          authProvider={authProvider}
+          // customRoutes={customRoute}
+      >
+          {getResource}
+      </Admin>
   );
 }
 
