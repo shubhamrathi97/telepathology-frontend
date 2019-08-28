@@ -1,20 +1,26 @@
 import React from 'react';
 import './App.css';
 import customRoute from './customRoute';
+import {CustomLayout} from './components/layout';
 import drfProvider from './restProvider';
 import {getResource} from "./Resources";
 import authProvider from "./authProvider";
-import {Admin} from 'react-admin'
+import {Admin, Login} from 'react-admin'
 import config from './config';
+import {createMuiTheme} from "@material-ui/core";
+import {red, indigo, pink} from '@material-ui/core/colors';
 
 const dataProvider = drfProvider(config.djangoServerURL);
+
+const CustomLoginPage = () => <Login backgroundImage='/asset/microscope.jpg' />;
 
 function App() {
   return (
       <Admin
           // title={JSON.parse(localStorage.getItem('hospital')).name}
-          // appLayout={CustomLayout}
+          appLayout={CustomLayout}
           dataProvider={dataProvider}
+          loginPage={CustomLoginPage}
           // dashboard={Dashboard}
           authProvider={authProvider}
           // customRoutes={customRoute}

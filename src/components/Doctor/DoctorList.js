@@ -1,5 +1,6 @@
 import React from 'react';
-import {List, Datagrid, TextField, EmailField, BooleanField, EditButton, Filter, TextInput, BooleanInput} from 'react-admin';
+import {List, Datagrid, TextField, EmailField, BooleanField, EditButton, Filter, TextInput, BooleanInput, DateField
+} from 'react-admin';
 
 const DoctorFilter = (props) => (
     <Filter {...props}>
@@ -20,7 +21,7 @@ export const DoctorList = props => (
             <TextField source="mobile" />
             <EmailField source="email" />
             <TextField source="gender" />
-            <TextField source="dob" />
+            <DateField source="dob" label={'Date of Birth'} options={{year: 'numeric', month: 'long', day: 'numeric' }} />
             <TextField source="degree" />
             <EditButton/>
         </Datagrid>

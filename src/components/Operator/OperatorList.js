@@ -1,5 +1,5 @@
 import React from 'react';
-import {List, Datagrid, TextField, EmailField, BooleanField, EditButton, Filter, TextInput} from 'react-admin';
+import {List, Datagrid, TextField, EmailField, BooleanField, EditButton, Filter, TextInput, DateField} from 'react-admin';
 
 const OperatorFilter = (props) => (
     <Filter {...props}>
@@ -20,7 +20,7 @@ export const OperatorList = props => (
             <TextField source="mobile" />
             <EmailField source="email" />
             <TextField source="gender" />
-            <TextField source="dob" />
+            <DateField source="dob"  options={{year: 'numeric', month: 'long', day: 'numeric' }}  />
             <EditButton/>
         </Datagrid>
     </List>

@@ -5,7 +5,7 @@ import { parse } from "query-string";
 export const ReviewCreate = ({permissions, ...props}) => {
     const { sample: sample_id_string } = parse(props.location.search);
     const sample_id = sample_id_string ? parseInt(sample_id_string, 10) : '';
-    const redirect = sample_id ? `/sample/sample/${sample_id}/show/review` : 'show';
+    const redirect = sample_id ? `/sample/sample/${sample_id}/show` : 'show';
 
 
     return (

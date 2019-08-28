@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Carousel, {Modal, ModalGateway} from "react-images";
-import {Button} from "@material-ui/core";
+import {Button, Typography} from "@material-ui/core";
+import {FieldTitle} from 'react-admin';
 
 export const ImageViewer = ({source, record = {}}) => {
     // console.log(record.batch.images);
@@ -29,6 +30,7 @@ export const ImageViewer = ({source, record = {}}) => {
                     </Modal>
                 ) : null}
             </ModalGateway>
+            {/*<FieldTitle>{label}</FieldTitle>*/}
 
             <Gallery>
                 {
@@ -50,6 +52,9 @@ export const ImageViewer = ({source, record = {}}) => {
     )
 };
 
+ImageViewer.defaultProps = {
+    addLabel: true
+};
 
 const gutter = 2;
 
@@ -57,8 +62,7 @@ const Gallery = (props) => (
     <div
         style={{
             overflow: 'hidden',
-            marginLeft: -gutter,
-            marginRight: -gutter,
+            display: 'block'
         }}
         {...props}
     />
@@ -72,7 +76,7 @@ const Image = (props) => (
             float: 'left',
             margin: gutter,
             overflow: 'hidden',
-            paddingBottom: '16%',
+            paddingBottom: '14%',
             position: 'relative',
             width: `calc(25% - ${gutter * 2}px)`,
 

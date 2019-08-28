@@ -2,7 +2,7 @@ import React from 'react';
 import {List, Datagrid, TextField, EmailField, BooleanField, NumberField, DateField, ReferenceField, ShowButton,
 Filter, TextInput, BooleanInput, RefreshButton, ExportButton, Button, Link, BulkDeleteButton } from 'react-admin';
 import {CardActions} from "@material-ui/core";
-import ChatBubbleIcon from "@material-ui/core/SvgIcon/SvgIcon";
+import {MaterialShowButton} from "../common/CustomButton";
 
 const ReviewFilter = (props) => (
     <Filter {...props}>
@@ -18,14 +18,14 @@ const ReviewFilter = (props) => (
 
 const CustomShowButton = ({ record }) => {
     if(record){
-        return (<Button
+        return (<MaterialShowButton
             component={Link}
             to={{
-                pathname: `/sample/sample/${record.sample_id}/show/review`,
+                pathname: `/sample/sample/${record.sample_id}/show`,
             }}
             label="Show"
-        >
-        </Button> )
+        />
+        )
     }
     return null
 };
@@ -89,7 +89,7 @@ export const ReviewList = (props) =>{
             <BooleanField source="again_review" label={'Review again'} />
             <BooleanField source="images_unclear" label={'Unclear Image'}/>
             <NumberField source="doctor_detail.name" label={'Doctor Name'}/>
-            <DateField source="created" label={'Review Date'}/>
+            <DateField source="created" label={'Review Date'}  options={{year: 'numeric', month: 'long', day: 'numeric' }} />
             <CustomShowButton/>
         </Datagrid>
     </List>
