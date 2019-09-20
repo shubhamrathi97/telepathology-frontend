@@ -4,10 +4,11 @@ import {Edit, Create, SimpleForm, TextInput, ReferenceInput, SelectInput, Boolea
 import {makeStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import {GenderField} from "../common/GenderField";
+import {HiddenInput} from "../common/CustomButton";
 
 const useStyles = makeStyles(theme => ({
     inlineBlock: {
-        display: 'block',
+        display: 'inline-flex',
         marginRight: '1rem'
     }
 }));
@@ -23,12 +24,14 @@ export const DoctorCreate = props => {
                 </Typography>
                 <TextInput source="name"  formClassName={classes.inlineBlock} validate={required()}/>
                 <TextInput source="email" formClassName={classes.inlineBlock} validate={required()}/>
+                <TextInput source="password" formClassName={classes.inlineBlock} validate={required()}/>
                 <TextInput source="mobile" formClassName={classes.inlineBlock} validate={required()}/>
                 <GenderField source="gender" formClassName={classes.inlineBlock} validate={required()}/>
                 <DateInput source="dob" formClassName={classes.inlineBlock} />
                 <TextInput source="degree" formClassName={classes.inlineBlock}/>
-                <TextInput source="password" formClassName={classes.inlineBlock} validate={required()}/>
-                <DisabledInput source="type" defaultValue={'doctor'} formClassName={classes.inlineBlock}/>
+                <HiddenInput>
+                    <DisabledInput source="type" defaultValue={'doctor'} formClassName={classes.inlineBlock}/>
+                </HiddenInput>
                 {/*<Typography variant={'h6'}>*/}
                 {/*    Operator Address*/}
                 {/*</Typography>*/}

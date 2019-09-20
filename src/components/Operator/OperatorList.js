@@ -1,5 +1,8 @@
 import React from 'react';
-import {List, Datagrid, TextField, EmailField, BooleanField, EditButton, Filter, TextInput, DateField} from 'react-admin';
+import {List, Datagrid, TextField, EmailField, BooleanField, EditButton, Filter, TextInput, DateField, DeleteButton,
+    BulkDeleteButton}
+from 'react-admin';
+import {CustomActions} from "../common/CustomButton";
 
 const OperatorFilter = (props) => (
     <Filter {...props}>
@@ -13,8 +16,13 @@ const OperatorFilter = (props) => (
     </Filter>
 );
 
-export const OperatorList = props => (
-    <List {...props} filters={<OperatorFilter/>}>
+export const OperatorList = ({permissions, ...props}) => (
+    <List {...props}
+          filters={<OperatorFilter/>}
+          actions={<CustomActions/>}
+          title={"List of Operators"}
+          bulkActionButtons={permissions === 'admin' ? <BulkDeleteButton/> : false}
+    >
         <Datagrid>
             <TextField source="name" />
             <TextField source="mobile" />
@@ -22,6 +30,7 @@ export const OperatorList = props => (
             <TextField source="gender" />
             <DateField source="dob"  options={{year: 'numeric', month: 'long', day: 'numeric' }}  />
             <EditButton/>
+            {/*{permissions === 'admin' ? <DeleteButton label={''} undoable={false}/> : null }*/}
         </Datagrid>
     </List>
 );

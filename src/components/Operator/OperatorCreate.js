@@ -4,10 +4,11 @@ import {Edit, Create, SimpleForm, TextInput, ReferenceInput, SelectInput, Boolea
 import {makeStyles} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import {GenderField} from "../common/GenderField";
+import {HiddenInput} from "../common/CustomButton";
 
 const useStyles = makeStyles(theme => ({
     inlineBlock: {
-        display: 'block',
+        display: 'inline-flex',
         marginRight: '1rem'
     }
 }));
@@ -27,7 +28,9 @@ export const OperatorCreate = props => {
                 <GenderField source="gender" formClassName={classes.inlineBlock} validate={required()}/>
                 <DateInput source="dob" formClassName={classes.inlineBlock} />
                 <TextInput source="password" formClassName={classes.inlineBlock} validate={required()}/>
-                <DisabledInput source="type" defaultValue={'operator'} formClassName={classes.inlineBlock}/>
+                <HiddenInput>
+                    <DisabledInput source="type" defaultValue={'operator'} formClassName={classes.inlineBlock}/>
+                </HiddenInput>
                 {/*<Typography variant={'h6'}>*/}
                 {/*    Operator Address*/}
                 {/*</Typography>*/}

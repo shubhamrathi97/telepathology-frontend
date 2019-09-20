@@ -1,7 +1,7 @@
 import React, {createElement} from 'react';
 import { connect } from 'react-redux';
 import { MenuItemLink, getResources, Responsive } from 'react-admin';
-import {ListItem, Collapse, List, makeStyles} from "@material-ui/core";
+import {ListItem, Collapse, List, makeStyles, Typography} from "@material-ui/core";
 import { withRouter } from 'react-router-dom';
 
 const MenuStyle = makeStyles(theme => ({
@@ -11,6 +11,25 @@ const MenuStyle = makeStyles(theme => ({
     },
     menuItemStyle: {
         width: '100%'
+    },
+    logoImg: {
+        width: '100px',
+        height: '100px',
+        display: 'block',
+        margin: 'auto',
+    },
+    logoContainer: {
+        textAlign: 'center',
+        borderRadius: '50%',
+        width: '100px',
+        padding: '10%',
+        margin: 'auto',
+        height: '100px',
+        backgroundColor: 'white',
+    },
+    sidebarBrand: {
+        textAlign: 'center',
+        color: 'white'
     }
 }));
 
@@ -31,20 +50,20 @@ const SampleMenu = (props) => {
                     to={`/${resource.name}`}
                     primaryText={resource.options && resource.options.label || resource.name}
                     leftIcon={createElement(resource.icon)}
-                    onClick={handleClick}
+                    // onClick={handleClick}
                 />
             </React.Fragment>
             <Collapse in={open} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                    <ListItem className={style.listItemStyle}>
-                    <MenuItemLink
-                        key={`All ${resource.name}`}
-                        to={`/${resource.name}`}
-                        primaryText={'All'}
-                        // leftIcon={createElement(resource.icon)}
-                        onClick={onMenuClick}
-                        className={style.menuItemStyle}
-                    /></ListItem>
+                    {/*<ListItem className={style.listItemStyle}>*/}
+                    {/*<MenuItemLink*/}
+                    {/*    key={`All ${resource.name}`}*/}
+                    {/*    to={`/${resource.name}`}*/}
+                    {/*    primaryText={'All'}*/}
+                    {/*    // leftIcon={createElement(resource.icon)}*/}
+                    {/*    onClick={onMenuClick}*/}
+                    {/*    className={style.menuItemStyle}*/}
+                    {/*/></ListItem>*/}
                     <ListItem className={style.listItemStyle}>
                         <MenuItemLink
                             key={`Reviewed ${resource.name}`}
@@ -71,10 +90,19 @@ const SampleMenu = (props) => {
 
 const MyMenu = (props) => {
     const { resources, onMenuClick, logout, className='' } = props;
+    const classes = MenuStyle();
+
     return (
         <div className={className}>
+            <div className={classes.sidebarBrand}>
+            <div className={classes.logoContainer}>
+                <img src={'/asset/microscope.svg'} className={classes.logoImg}/>
+            </div>
+            <Typography variant={"h6"}>
+                Telepathology
+            </Typography>
+            </div>
             {resources.map(resource => {
-                console.log(resource);
                 if(resource.hasList){
                     if(resource.name === 'sample/sample'){
                         return (

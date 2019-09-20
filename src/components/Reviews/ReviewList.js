@@ -60,13 +60,7 @@ const ReviewActions = ({
             filterValues,
             context: 'button',
         }) }
-        <ExportButton
-            disabled={total === 0}
-            resource={resource}
-            sort={currentSort}
-            filter={filterValues}
-            exporter={exporter}
-        />
+
         <RefreshButton />
     </CardActions>
 );

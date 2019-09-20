@@ -1,7 +1,8 @@
 import React from 'react'
 
 const config = {
-    'djangoServerURL': 'http://localhost:8000',
-}
+    'djangoServerURL': 'https://telepathology.ml/api',
+    'djangoLocalServerURL': 'http://localhost:8000',
+};
 
 export default config;

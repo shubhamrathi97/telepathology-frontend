@@ -11,8 +11,8 @@ import {createMuiTheme} from "@material-ui/core";
 import {red, indigo, pink} from '@material-ui/core/colors';
 
 const dataProvider = drfProvider(config.djangoServerURL);
-
-const CustomLoginPage = () => <Login backgroundImage='/asset/microscope.jpg' />;
+console.log(process.env.PUBLIC_URL);
+const CustomLoginPage = () => {return (<Login backgroundImage={process.env.PUBLIC_URL + '/asset/microscope.jpg'} />)};
 
 function App() {
   return (

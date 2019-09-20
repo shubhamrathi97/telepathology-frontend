@@ -1,6 +1,8 @@
 import React from 'react';
-import {List, Datagrid, TextField, EmailField, BooleanField, EditButton, Filter, TextInput, BooleanInput, DateField
+import {List, Datagrid, TextField, EmailField, BooleanField, EditButton, Filter, TextInput, BooleanInput, DateField,
+    DeleteButton, BulkDeleteButton
 } from 'react-admin';
+import {CustomActions} from "../common/CustomButton";
 
 const DoctorFilter = (props) => (
     <Filter {...props}>
@@ -14,8 +16,13 @@ const DoctorFilter = (props) => (
     </Filter>
 );
 
-export const DoctorList = props => (
-    <List {...props} filters={<DoctorFilter/>}>
+export const DoctorList = ({permissions, ...props}) => (
+    <List {...props}
+          title={'List of Doctors'}
+          actions={<CustomActions/>}
+          filters={<DoctorFilter/>}
+          bulkActionButtons={permissions === 'admin' ? <BulkDeleteButton/> : false}
+    >
         <Datagrid>
             <TextField source="name" />
             <TextField source="mobile" />
@@ -24,6 +31,7 @@ export const DoctorList = props => (
             <DateField source="dob" label={'Date of Birth'} options={{year: 'numeric', month: 'long', day: 'numeric' }} />
             <TextField source="degree" />
             <EditButton/>
+            {/*{permissions === 'admin' ? <DeleteButton label={''} undoable={false}/> : null }*/}
         </Datagrid>
     </List>
 );

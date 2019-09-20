@@ -8,8 +8,10 @@ import {
     Notification,
     Sidebar,
     setSidebarVisibility,
-    AppBar
+    AppBar, UserMenu
+
 } from 'react-admin';
+import {Typography} from "@material-ui/core";
 
 const styles = makeStyles((theme) => ({
     root: {
@@ -40,7 +42,10 @@ const styles = makeStyles((theme) => ({
     contentParent: {
         display: 'flex',
         flexDirection: 'column',
-        flex: 1
+        flex: 1,
+        '& div.headroom': {
+            position: 'relative !important'
+        }
     },
     appbarStyle: {
         'position':'relative',
@@ -49,8 +54,7 @@ const styles = makeStyles((theme) => ({
     sideBarStyle: {
         color: '#6c757d',
         backgroundColor: '#343a40',
-        height: '100vh',
-        marginRight: '15px'
+        minHeight: '100vh'
     },
     menuStyle: {
         color: '#6c757d',
@@ -72,6 +76,10 @@ const styles = makeStyles((theme) => ({
     }
 }));
 
+const MyUserMenu = (props) => (
+    <UserMenu label={JSON.parse(localStorage.getItem('user')).name} {...props}/>
+);
+
 const CustomLayout = (props) => {
     useEffect( () => {props.setSidebarVisibility(true)} , []);
     const classes = styles();
@@ -87,12 +95,13 @@ const CustomLayout = (props) => {
         return (
             <div className={classes.root}>
                 <div className={classes.appFrame}>
-                    <AppBar title={title} open={open} logout={logout} className={classes.appbarStyle}/>
                     <main className={classes.contentWithSidebar}>
                         <Sidebar className={classes.sideBarStyle}>
+
                             <MyMenu logout={logout} hasDashboard={!!dashboard} className={classes.menuStyle} />
                         </Sidebar>
                         <div className={classes.contentParent}>
+                            <AppBar title={title} open={open} logout={logout} className={classes.appbarStyle} userMenu={<MyUserMenu/>}/>
                             <div className={classes.content}>
                                 {children}
                             </div>
