@@ -7,7 +7,7 @@ import {
 import {ImageViewer} from "./Gallery";
 import {CardActions, makeStyles, Typography, Divider, Card, Button} from '@material-ui/core';
 import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
-import {HiddenInput} from "../common/CustomButton";
+import {HiddenInput, MaterialCreateButton} from "../common/CustomButton";
 import SampleReviewCreate from "./SampleReviewCreate";
 
 const AddNewReviewButton = ({record}) => {
@@ -118,9 +118,7 @@ export const SampleShow = ({permissions, ...props}) => {
                         {/*<EditButton />*/}
                     </Datagrid>
                 </ReferenceManyField>
-                {/*{permissions !== 'operator' ? <AddNewReviewButton/> : null}*/}
-                <SampleReviewCreate className={classes.reviewBox}/>
-
+                {permissions !== 'operator' ? <SampleReviewCreate className={classes.reviewBox}/> : null}
             </SimpleShowLayout>
         </Show>
     );

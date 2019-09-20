@@ -101,6 +101,9 @@ const MyMenu = (props) => {
             <Typography variant={"h6"}>
                 Telepathology
             </Typography>
+                <Typography variant={'p'}>
+                    ({JSON.parse(localStorage.getItem('user')).name}, {JSON.parse(localStorage.getItem('user')).type})
+                </Typography>
             </div>
             {resources.map(resource => {
                 if(resource.hasList){

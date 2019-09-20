@@ -46,7 +46,8 @@ export const CustomActions = ({
                            resource,
                            selectedIds,
                            showFilter,
-                           total
+                           total,
+                            showCreate
                        }) => (
     <CardActions>
         {bulkActions && React.cloneElement(bulkActions, {

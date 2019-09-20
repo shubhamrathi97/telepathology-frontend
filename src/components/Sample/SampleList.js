@@ -1,7 +1,8 @@
 import React from 'react';
 import {List, Datagrid, TextField, DateField, ReferenceField, Filter, ExportButton, TextInput, DeleteButton,
-    BooleanInput, BulkDeleteButton} from 'react-admin';
-import {MaterialShowButton, CustomActions} from "../common/CustomButton";
+    BooleanInput, BulkDeleteButton, RefreshButton} from 'react-admin';
+import {MaterialShowButton, CustomActions, MaterialCreateButton} from "../common/CustomButton";
+import {CardActions} from "@material-ui/core";
 
 
 const SampleFilter = (props) => (
@@ -15,12 +16,47 @@ const SampleFilter = (props) => (
     </Filter>
 );
 
+const SampleCustomActions = ({
+                                        bulkActions,
+                                        basePath,
+                                        currentSort,
+                                        displayedFilters,
+                                        exporter,
+                                        filters,
+                                        filterValues,
+                                        onUnselectItems,
+                                        resource,
+                                        selectedIds,
+                                        showFilter,
+                                        total,
+                                        createPermission
+                                    }) => (
+    <CardActions>
+        {bulkActions && React.cloneElement(bulkActions, {
+            basePath,
+            filterValues,
+            resource,
+            selectedIds,
+            onUnselectItems,
+        })}
+        {filters && React.cloneElement(filters, {
+            resource,
+            showFilter,
+            displayedFilters,
+            filterValues,
+            context: 'button',
+        }) }
+        <RefreshButton />
+        { createPermission ? <MaterialCreateButton basePath={basePath} />: null}
+    </CardActions>
+);
+
 
 export const SampleList = ({permissions, ...props}) => (
             <List {...props}
                   title={"List of Samples"}
                   filters={<SampleFilter/>}
-                  actions={<CustomActions/>}
+                  actions={<SampleCustomActions createPermission={permissions !== 'doctor'}/>}
                   bulkActionButtons={permissions === 'admin' ? <BulkDeleteButton/> : false}
             >
                 <Datagrid>
