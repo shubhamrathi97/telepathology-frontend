@@ -53,7 +53,8 @@ export const WebCamComponent  = withStyles(style)(({classes, ...props}) => {
 
                 imageType = {IMAGE_TYPES.PNG}
                 imageCompression = {1}
-                isMaxResolution = {true}
+                isMaxResolution = {false}
+                // isFullscreen={true}
                 isImageMirror = {false}
                 isSilentMode = {true}
                 isDisplayStartCameraError = {true}
