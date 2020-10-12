@@ -1,7 +1,11 @@
-This project preview is available at
+# Telepathology 
+Telepathology project was created to work with mini digital microscopes that will help in remote pathology sample collection and reporting. Developed the application as MVP for early stage startup. As the startup no longer working on product, I have open source the project. 
 
-Please use below crediential to view the Portal as different user have different access:
+Backend Deployed on Heroku and Frontend is deploy on Netlify. 
+Telepathology Backend Git Repo - https://github.com/shubhamrathi97/telepathology-backend
 
+This project preview is available at https://angry-visvesvaraya-81e8aa.netlify.app/
+Please use below crediential to preview the Portal as different user have access to different sections:
 * Doctor (doc1@example.com, doc1)
 * Operator (op1@example.com, op1)
 
