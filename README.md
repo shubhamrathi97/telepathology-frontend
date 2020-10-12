@@ -1,15 +1,21 @@
 # Telepathology 
 Telepathology project was created to work with mini digital microscopes that will help in remote pathology sample collection and reporting. Developed the application as MVP for early stage startup. As the startup no longer working on product, I have open source the project. 
 
-Backend Deployed on Heroku and Frontend is deploy on Netlify. 
+## Backend Repository
 Telepathology Backend Git Repo - https://github.com/shubhamrathi97/telepathology-backend
 
-This project preview is available at https://angry-visvesvaraya-81e8aa.netlify.app/
-Please use below crediential to preview the Portal as different user have access to different sections:
+## Preview
+Web Portal Link https://angry-visvesvaraya-81e8aa.netlify.app/
+
+Backend Deployed on Heroku and Frontend is deploy on Netlify. Please use below crediential to preview the Portal as different user have access to different sections:
+
 * Doctor (doc1@example.com, doc1)
 * Operator (op1@example.com, op1)
 
-Technology used - React, React-admin, Material-UI, Django Backend, Postgres
+Note: Login might take around 10 sec. Backend is deployed on heroku and dyno bootup takes some time for first request.
+
+## Technology used
+React, React-admin, Material-UI, Django Backend, Postgres
 
 ## Available Scripts
 
